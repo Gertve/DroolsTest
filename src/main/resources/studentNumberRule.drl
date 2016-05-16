@@ -1,0 +1,12 @@
+
+dialect  "mvel"
+import gert.drools.UnallocatedTransaction;
+import gert.drools.AllocatedTransaction;
+
+rule "studentNumberRule"
+    when
+      transaction:UnallocatedTransaction(reference matches "[0-9]{8}" );
+    then
+      allocated = new AllocatedTransaction(transaction);
+      allocated.print();
+end
